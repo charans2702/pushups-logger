@@ -5,7 +5,6 @@ Push-Ups Logger is a web application built with Flask that allows users to track
 ![user interface1](static/images/q1.png)
 ![user interface2](static/images/q2.png)
 ![user interface3](static/images/q3.png)
-![user interface4](static/images/q4.png)
 ![user interface5](static/images/q5.png)
 ![user interface6](static/images/q6.png)
 
