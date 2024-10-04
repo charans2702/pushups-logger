@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Sign Up - Push-Ups Logger{% endblock %}
+{% block content %}
+
+<div class="auth-form-container">
+    <div class="auth-form-card card shadow-sm">
+        <div class="card-body">
+            <h2 class="auth-form-title card-title text-center mb-4">     Sign Up     </h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-auth">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+    </div>
+</div>
+
+{% endblock %}

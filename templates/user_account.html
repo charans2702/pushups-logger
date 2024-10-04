@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}'s Account{% endblock %}
+{% block content %}
+
+<h1 id="welcome-user.username" class="text-center mb-4">Welcome, {{ user.username }}!</h1>
+
+<div class="container">
+    <h2 id="your-workouts" class="mb-4">Your Workouts</h2>
+
+    {% if workouts %}
+    <div class="table-responsive">
+        <table class="workout-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Push-Ups</th>
+                    <th>Comment</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for workout in workouts %}
+                <tr>
+                    <td>{{ workout.date_posted.strftime('%m/%d/%Y') }}</td>
+                    <td>{{ workout.pushups }}</td>
+                    <td>{{ workout.comment if workout.comment else 'No comment' }}</td>
+                    <td>
+                        <a href="{{ url_for('update_workout', workout_id=workout.id) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                        <a href="{{ url_for('delete_workout', workout_id=workout.id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>You haven't logged any workouts yet. <a href="{{ url_for('new_workout') }}">Start logging now!</a></p>
+    {% endif %}
+
+    <div class="text-center mt-5 custom-button-container">
+        <a href="{{ url_for('new_workout') }}" class="btn btn-primary btn-lg">Log New Workout</a>
+    </div>
+    
+    <style>
+    .custom-button-container {
+        margin-top: 10px; 
+        text-align: center;
+        padding-right: 70px;
+    }
+    </style>
+    
+</div>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% endblock %}

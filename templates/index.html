@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Push-Ups Logger{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center fade-in">
+    <h1 class="display-4">Welcome to Push-Ups Logger!</h1>
+    <p class="lead">Track your push-ups, challenge yourself, and achieve your fitness goals.</p>
+</div>
+<div class="text-center mt-5">
+  <img src="{{ url_for('static', filename='images/pushup.png') }}" alt="Push-ups illustration" class="img-fluid rounded shadow-sm" style="max-height: 300px;">
+</div>
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card fade-in">
+            <div class="card-body">
+                <h5 class="card-title">Track Progress</h5>
+                <p class="card-text">Log your push-ups daily and see your improvement over time.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card fade-in">
+            <div class="card-body">
+                <h5 class="card-title">Set Goals</h5>
+                <p class="card-text">Challenge yourself with personal goals and track your achievements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card fade-in">
+            <div class="card-body">
+                <h5 class="card-title">Stay Motivated</h5>
+                <p class="card-text">Join a community of fitness enthusiasts and stay inspired.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
